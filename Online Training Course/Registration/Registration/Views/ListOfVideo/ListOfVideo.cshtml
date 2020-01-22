@@ -1,0 +1,66 @@
+﻿@model Registration.Models.VideoData
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListOfVideo</title>
+   
+      
+      
+
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+
+
+    
+</head>
+<body>
+    <div>
+        <h1>Video Approvals</h1>
+        @{
+
+            <table>
+                <tr>
+                    <th>Email</th>
+                    <th>Topic</th>
+                    <th>File</th>
+                </tr>
+                @for (int i = 0; i < Model.Email.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.Email[i]</td>
+                        <td>@Model.Topic[i]</td>
+                        <td>@Model.File[i]</td>
+                        <td><a href="~/AD1/AD1?a=View&Email=@Model.Email[i]&File=@Model.File[i]"> View  </a>  </td>
+                        <td><a href="~/AD1/AD1?a=Approve&Email=@Model.Email[i]&File=@Model.File[i]&Topic=@Model.Topic[i]"> approve  </a>  </td>
+                        <td><a href="~/AD1/AD1?a=Delete&Email=@Model.Email[i]&File=@Model.File[i]"> delete  </a>  </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+        <input type="button" value="Go Back" onclick="history.back()">
+    </div>
+</body>
+</html>

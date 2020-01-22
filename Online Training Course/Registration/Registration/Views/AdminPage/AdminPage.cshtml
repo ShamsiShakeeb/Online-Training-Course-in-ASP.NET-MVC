@@ -1,0 +1,71 @@
+﻿@model Registration.Models.Admin
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdminPage</title>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+
+</head>
+<body>
+    <h1>Admin Profile</h1>
+
+    1) <a href="~/CreateSection/CreateSection"> Create A Educational Topic </a> <br />
+    2) <a href="~/ListOfVideo/ListOfVideo"> ListOfVideo </a> <br />
+    3) <a href="~/CommentSection/CommentSection"> Comment Section    </a><br />
+    4) <a href="~/DataVisualization/DataVisualization"> View Data </a><br />
+    5) <a href="~/CommentSection/StudentList"> Student List   </a><br />
+    6) <a href="~/CommentSection/TeacherList"> Teacher List    </a><br />
+
+    <button type="submit" onclick="location.href='@Url.Action("LogOut", "AdminLogin/AdminLogin")'" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Logout</button>
+    <div>
+
+        @{
+            <h1>Teacher Registration Approvals</h1>
+            <table>
+                <tr>
+                    <th>User Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
+                @for (int i = 0; i < Model.Email.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.Username[i]</td>
+                        <td>@Model.Phone[i]</td>
+                        <td>@Model.Email[i]</td>
+                        <td><a href="~/AD/AD?a=Approve&b=@Model.Username[i]&c=@Model.Phone[i]&d=@Model.Email[i]&e=@Model.pass[i]"> approve  </a>  </td>
+                        <td><a href="~/AD/AD?a=Delete&b=@Model.Email[i]"> delete  </a>  </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+
+    </div>
+</body>
+</html>

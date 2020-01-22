@@ -1,0 +1,65 @@
+﻿@model Registration.Models.CommentModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CommentSection</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Students Comment Data</h1>
+        @{
+
+            <table>
+                <tr>
+                    <th>Tuitorial Name</th>
+                    <th>Comment</th>
+                    <th>Delete</th>
+                    <th>Submit New Topics </th>
+
+                </tr>
+                @for (int i = 0; i < Model.TuitorialName.Count; i++)
+                {
+                    <tr>
+                        <td>@Model.TuitorialName[i]</td>
+                        <td>@Model.FeedBack[i]</td>
+                        <td> <a href="~/DeleteTF/DeleteTF?a=@Model.TuitorialName[i]&b=@Model.FeedBack[i]"> Delete </a> </td>
+                        <td>
+                            <form action="~/NewTopic/NewTopic" method="get">
+                                <input type="text" name="value">
+                                <input type="submit">
+                            </form>
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+        }
+
+        <input type="button" value="Go Back" onclick="history.back()">
+    </div>
+</body>
+</html>

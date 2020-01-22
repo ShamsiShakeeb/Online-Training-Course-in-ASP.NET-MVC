@@ -1,0 +1,38 @@
+﻿@model Registration.Models.GetTopic
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CourseTaken</title>
+</head>
+<body>
+    <div>
+        <form action="StudentTakenCourse" method="post">
+            <select name="Topic">
+
+                @for (int i = 0; i < Model.Topic.Count; i++)
+                {
+                    if (!Model.Topic[i].ToString().Equals(""))
+                    {
+                        if (!Model.Topic[i].ToString().Equals(""))
+                        {
+                            <option value="@Model.Topic[i]"> @Model.Topic[i] </option>
+                        }
+                    }
+                }
+
+
+            </select>
+
+            <input type="submit">
+
+        </form>
+        <input type="button" value="Go Back" onclick="history.back()">
+    </div>
+</body>
+</html>

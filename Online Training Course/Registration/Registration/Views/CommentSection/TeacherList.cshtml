@@ -1,0 +1,56 @@
+﻿@model Registration.Models.UserList
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TeacherList</title>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+
+            @for (int i = 0; i < Model.email.Count; i++)
+            {
+
+                <tr>
+                    <td>@Model.Name[i]</td>
+                    <td>@Model.phone[i]</td>
+                    <td>@Model.email[i]</td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+    <input type="button" value="Go Back" onclick="history.back()">
+</body>
+</html>

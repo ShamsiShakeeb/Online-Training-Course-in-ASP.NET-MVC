@@ -1,0 +1,62 @@
+﻿@model Registration.Models.DataVisualization
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DataVisualization</title>
+
+    <script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainerBar", {
+    animationEnabled: true,
+    
+    
+
+	title:{
+		text:"New Topic Frequency"
+	},
+	axisX:{
+		interval: 1
+	},
+	axisY2:{
+		interlacedColor: "rgba(1,77,101,.2)",
+		gridColor: "rgba(1,77,101,.1)",
+		title: "Number of Topics"
+	},
+    data: [{
+        type: "bar",
+        name: "companies",
+        axisYType: "secondary",
+        color: "#014D65",
+        dataPoints: [
+
+        @Html.Raw(Model.Result)
+              
+
+               
+                     
+			
+		]
+	}]
+});
+chart.render();
+
+}
+
+    </script>
+
+</head>
+<body>
+    <div id="chartContainerBar" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    
+   
+    <input type="button" value="Go Back" onclick="history.back()">   
+</body>
+</html>
